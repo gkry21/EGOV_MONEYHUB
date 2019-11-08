@@ -32,7 +32,7 @@ public class AdminCtrl {
 	public Map<?,?> access(@PathVariable String empno,@RequestBody Admin param) {	
 	IFunction<Admin, Admin> f = t-> adminMapper.access(param);
 	map.clear();
-	//testsss
+	//testsssddd
 	map.put("msg",(f.apply(param)!=null)?"SUCCESS":"FAIL");
 	return map;
 	}
