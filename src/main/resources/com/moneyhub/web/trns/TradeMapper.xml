@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- client에서 user로 변경함 -->
+    <mapper namespace="com.moneyhub.web.trade.TradeMapper">
+    <insert id="createTrade">
+    INSERT INTO TRADE (bsDate,tdSeq,cusNum,seq,tdTypCD,tdstCD,chngCD,accNum,cntCD,excRate,cMem,cDate,uMem,uDate) 
+    VALUES(#{bsDate},#{tdSeq},#{cusNum},#{seq},#{tdTypCD},#{tdstCD},#{chngCD},#{accNum},#{cntCD},
+    #{excRate},#{cMem},#{cDate},#{uMem},#{uDate})
+    </insert>
+    </mapper>
