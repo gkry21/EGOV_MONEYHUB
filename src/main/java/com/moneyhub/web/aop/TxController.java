@@ -22,7 +22,7 @@ public class TxController {
 	
 	@GetMapping("/crawling/{site}/{srch}")
 	public void bringUrl(@PathVariable String site, @PathVariable String srch) {
-		p.accept(site+",srch"+srch);
+		p.accept(site+",srch"+srch);//123123
 		HashMap<String, String> map = new HashMap<>();
 		map.clear();
 		map.put("site", site);
