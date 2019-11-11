@@ -137,6 +137,22 @@ adm = (()=>{
 				alert('일괄등록된 유저의 수 :'+d.userCount)
 			})
 		})
+		$('<a>거래 생성</a>')
+		.appendTo('#right')
+		.click(e=>{
+			e.preventDefault()
+			$.getJSON(_+'/trade/create/trade',d=>{
+				alert('거래 생성 :'+d.userCount)
+			})
+		})
+		$('<a>거래내역 생성</a>')
+		.appendTo('#right')
+		.click(e=>{
+			e.preventDefault()
+			$.getJSON(_+'/trhs/create/trhs',d=>{
+				alert('거래내역테이블 생성 :'+d.userCount)
+			})
+		})
 	}
 	
 //	let webCrawl=()=>{

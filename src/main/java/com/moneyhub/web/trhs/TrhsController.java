@@ -1,5 +1,4 @@
-package com.moneyhub.web.trade;
-
+package com.moneyhub.web.trhs;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,24 +14,22 @@ import com.moneyhub.web.cmm.IConsumer;
 import com.moneyhub.web.enums.SQL;
 import com.moneyhub.web.utl.Printer;
 
-
-
 @RestController
-@RequestMapping("/trade")
-public class TradeController {
-	private static final Logger logger = LoggerFactory.getLogger(TradeController.class);
+@RequestMapping("/trhs")
+public class TrhsController {
+	private static final Logger logger = LoggerFactory.getLogger(TrhsController.class);
 	@Autowired Printer p;
-	@Autowired TradeMapper tradeMapper;
-	@GetMapping("/create/trade")
-	public Map<?,?> createTrade(){
+	@Autowired TrhsMapper trhsMapper;
+	
+	@GetMapping("/create/trhs")
+	public Map<?,?> createTrhs(){
 		HashMap<String, String> paramMap = new HashMap<>();
-		paramMap.put("CREATE_TRADE", SQL.CREATE_TRADE.toString());
-		p.accept("테이블 생성 쿼리 : \n" +paramMap.get("CREATE_TRADE"));
-		IConsumer<HashMap<String, String>> c = o->tradeMapper.createTrade(o);
+		paramMap.put("CREATE_TRHS", SQL.CREATE_TRHS.toString());
+		p.accept("테이블 생성 쿼리 : \n" +paramMap.get("CREATE_TRHS"));
+		IConsumer<HashMap<String, String>> c = o->trhsMapper.createTrhs(o);
 		c.accept(paramMap);
 		paramMap.clear();
 		paramMap.put("map", "SUCCESS");
 		return paramMap;
 	}
-	
 }
