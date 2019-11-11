@@ -1,5 +1,6 @@
 package com.moneyhub.web.usr;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.moneyhub.web.cmm.IConsumer;
 import com.moneyhub.web.cmm.IFunction;
+import com.moneyhub.web.enums.SQL;
 import com.moneyhub.web.utl.Printer;
 
 @RestController
@@ -70,5 +72,18 @@ public class UserCtrl {
 		IConsumer<User> c = o -> userMapper.insertClient(param);
 		c.accept(param);
 		return "SUCCESS";	
+	}
+	
+	@GetMapping("/create/table")
+	public Map<?, ?> createCustomer(){
+		HashMap<String, String> paramMap = new HashMap<>();
+		paramMap.put("CREATE_CUSTOMER", SQL.CREATE_CUSTOMER.toString());
+		printer.accept("테이블 쿼리 생성 : \n" + paramMap.get("CREATE_CUSTOMER"));
+		IConsumer<HashMap<String, String>> c = t -> userMapper.createCustomer(t);
+		c.accept(paramMap);
+		paramMap.clear();
+		paramMap.put("msg", "SUCCESS");
+		
+		return paramMap;
 	}
 }

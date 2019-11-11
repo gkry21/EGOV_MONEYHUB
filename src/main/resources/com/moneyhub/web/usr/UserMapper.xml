@@ -22,5 +22,7 @@
             #{aid}, #{cname}, #{pwd}
         )
     </insert>
-
+  	<select id="createCustomer" resultType="map">
+       ${CREATE_CUSTOMER}
+    </select>
 </mapper>

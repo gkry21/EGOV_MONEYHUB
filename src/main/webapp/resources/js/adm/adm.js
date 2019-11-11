@@ -16,7 +16,7 @@ adm = (()=>{
 		init()
 		$.when(
 			$.getScript(navi_vue_js)
-			$.getScript()
+
 			)
 		.done(()=>{
 			setContentView()
@@ -154,6 +154,22 @@ adm = (()=>{
 //	}
 	let custManager=()=>{
 		alert('고객관리 페이지로 이동합니다.')
+		$('<a>환율 테이블 생성</a></br>')
+		.appendTo('#right')
+		.click(e=>{
+			e.preventDefault()
+			$.getJSON(_+'/exrates/create/table', d=>{
+				alert( '테이블 생성 성공 여부 : ' + d.msg )
+			})
+		})
+		$('<a>고객 테이블 생성</a></br>')
+		.appendTo('#right')
+		.click(e=>{
+			e.preventDefault()
+			$.getJSON(_+'/user/create/table', d=>{
+				alert( '테이블 생성 성공 여부 : ' + d.msg )
+			})
+		})
 	}
 	let itemReg=()=>{
 		alert('상품등록 페이지로 이동합니다.')

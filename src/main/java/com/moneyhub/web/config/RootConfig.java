@@ -34,7 +34,7 @@ public class RootConfig {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
 	    dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
-	    dataSource.setUrl("jdbc:mariadb://172.168.0.235/mysql");
+	    dataSource.setUrl("jdbc:mariadb://172.168.0.235/moneyhubdb");
 	    dataSource.setUsername("moneyhub");
 	    dataSource.setPassword("moneyhub");
 	return dataSource;

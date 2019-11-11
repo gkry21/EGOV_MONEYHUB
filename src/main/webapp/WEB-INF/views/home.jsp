@@ -15,10 +15,7 @@
 	<script src="<%=application.getContextPath()%>/resources/js/cmm/cookie.js"></script>
 	<script src="<%=application.getContextPath()%>/resources/js/adm/adm.js"></script>
 	<script src="<%=application.getContextPath()%>/resources/js/cmm/proxy.js"></script>
-	
-	
-	
-	
+
 	<script>
 	app.run('<%=application.getContextPath()%>');
 	</script>
