@@ -2,21 +2,18 @@
 var adm = adm ||{}
 adm = (()=>{
 	const WHEN_ERR = 'adm호출하는 js를 찾을 수 없습니다'
-	let _ , js , img , css , navi_vue_js , cust_vue_js
+	let _ , js , img , css , navi_vue_js;
 	let init =()=>{
 		_=$.ctx()
 		js=$.js()
 		img=$.img()
 		css=$.css()
 		navi_vue_js = js+'/vue/navi_vue.js'
-		cust_vue_js = js+'/vue/customer_vue.js'
 	}
 	let onCreate =()=>{
-		alert('환영함다')
 		init()
 		$.when(
 			$.getScript(navi_vue_js)
-			$.getScript()
 			)
 		.done(()=>{
 			setContentView()
@@ -59,7 +56,7 @@ adm = (()=>{
 				switch($(this).attr('name')){
 				case 'web_crawl': webCrawl()
 				break;
-				case 'cust_mgmt': custManager()
+				case 'cust_mgmt': cust_mgmt()
 					break;
 				case 'item_reg': itemReg()
 					break;
@@ -107,7 +104,39 @@ adm = (()=>{
         })
     }
 	let cust_mgmt=()=>{
-		alert('고객 등록 준비')
+	     $('#right').empty()		
+		$('<a>고객 테이블 생성</a>')
+		.appendTo('#right')
+		.click(e=>{
+			e.preventDefault()
+			$.getJSON(_+'/user/create/table',d=>{
+				alert('테이블 생성 성공여부 :'+d.msg)
+			})
+		})
+		$('<a>고객테이블 삭제</a>')
+		.appendTo('#right')
+		.click(e=>{
+			e.preventDefault()
+			$.getJSON(_+'/user/drop/table',d=>{
+				alert('일괄등록된 유저의 수 :'+d.userCount)
+			})
+		})
+		$('<a>고객명단 대량 생성</a>')
+		.appendTo('#right')
+		.click(e=>{
+			e.preventDefault()
+			$.getJSON(_+'/user/register/users',d=>{
+				alert('일괄등록된 유저의 수 :'+d.userCount)
+			})
+		})
+		$('<a>데이터베이스 생성</a>')
+		.appendTo('#right')
+		.click(e=>{
+			e.preventDefault()
+			$.getJSON(_+'/cmm/create/db',d=>{
+				alert('일괄등록된 유저의 수 :'+d.userCount)
+			})
+		})
 	}
 	
 //	let webCrawl=()=>{
@@ -152,9 +181,7 @@ adm = (()=>{
 //			
 //			})
 //	}
-	let custManager=()=>{
-		alert('고객관리 페이지로 이동합니다.')
-	}
+
 	let itemReg=()=>{
 		alert('상품등록 페이지로 이동합니다.')
 	}
@@ -167,17 +194,17 @@ adm = (()=>{
 	let itemDel=()=>{
 		alert('상품 삭체 페이지로 이동합니다.')
 	}
-	let naverClick=()=>{
-		alert('고객관리 페이지로 이동합니다.')
-	}
-	let daumClick=()=>{
-		alert('상품등록 페이지로 이동합니다.')
-	}
-	let googleClick=()=>{
-		alert('상품조회 페이지로 이동합니다.')
-	}
-	let moneyHubClick=()=>{
-		alert('상품관리 페이지로 이동합니다.')
-	}
+//	let naverClick=()=>{
+//		alert('고객관리 페이지로 이동합니다.')
+//	}
+//	let daumClick=()=>{
+//		alert('상품등록 페이지로 이동합니다.')
+//	}
+//	let googleClick=()=>{
+//		alert('상품조회 페이지로 이동합니다.')
+//	}
+//	let moneyHubClick=()=>{
+//		alert('상품관리 페이지로 이동합니다.')
+//	}
 	return {onCreate}
 })();

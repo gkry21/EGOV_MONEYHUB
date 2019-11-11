@@ -1,12 +1,15 @@
 package com.moneyhub.web.aop;
 
-import org.springframework.context.annotation.Lazy;
+import org.apache.ibatis.annotations.Insert;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+
+
+import com.moneyhub.web.usr.User;
 
 @Repository
-@Transactional
-@Lazy
-public class TXMapper {
+public interface TXMapper {
+	@Insert(" INSERT INTO CLIENT (AID,CNAME,PWD) VALUES (\n" + 
+			"            #{aid}, #{cname}, #{pwd})")
+	public int insertUser(User u);
 
 }

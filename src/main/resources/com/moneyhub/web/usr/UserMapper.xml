@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- client에서 user로 변경함 -->
+    
+	<mapper namespace="com.moneyhub.web.usr.UserMapper">
+	<select id="createDB" parameterType="hashmap">
+	${CREATE_DB}
+    </select>
+	<select id="createUser" parameterType="map">
+	${CREATE_USER}
+    </select>
+    <delete id="dropUser" parameterType="map">
+	${DROP_USER}
+    </delete>
+    <select id="selectUserById" resultType="User">
+       SELECT AID,CNAME,PWD
+		FROM USER
+		WHERE AID LIKE #{aid} AND PWD LIKE #{pwd}
+    </select>
+    <select id="existId" resultType="int">
+       SELECT COUNT(*)
+		FROM USER
+		WHERE AID LIKE #{aid}
+    </select>
+    <select id="countUsers" resultType="int">
+       SELECT COUNT(*)
+		FROM USER
+    </select>
+    <insert id="insertClient" parameterType="User">
+        INSERT INTO USER (AID,CNAME,PWD) VALUES (
+            #{aid}, #{cname}, #{pwd})
+    </insert>
+</mapper>

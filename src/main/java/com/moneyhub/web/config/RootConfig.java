@@ -34,7 +34,7 @@ public class RootConfig {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
 	    dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
-	    dataSource.setUrl("jdbc:mariadb://172.168.0.235/mysql");
+	    dataSource.setUrl("jdbc:mariadb://172.168.0.235/moneyhubdb"); //데이터베이스 생성후 moneyhubdb 로 이름 바꿀것, db소스도 수정할땐 삼각형
 	    dataSource.setUsername("moneyhub");
 	    dataSource.setPassword("moneyhub");
 	return dataSource;
