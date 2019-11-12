@@ -109,7 +109,7 @@ public class UserProxy extends Proxy{
 	public boolean existEmail(String cemail) {
 		boolean flag = false;
 		
-		if( userMapper.existEmail(cemail) == 1 ) {	// 중복이면 true
+		if( txMapper.existEmail(cemail) == 1 ) {	// 중복이면 true
 			flag = true;
 		}
 		return flag;
@@ -124,7 +124,7 @@ public class UserProxy extends Proxy{
 			user.setCpwd(makePwd());
 			user.setCname(makeName());
 			user.setCdate(makedate());
-			userMapper.insertUser(user);
+			txMapper.insertUser(user);
 			System.out.println("join 성공");
 		}else {
 			System.out.println("이메일 중복 - join 실패");

@@ -6,8 +6,20 @@ public enum SQL {
 	public String toString() {
 		String result= "";
 		switch (this) {
-		case DROP_USER:
-			result = "DROP TABLE USER";
+		case CREATE_USER :
+            result = "CREATE TABLE USER(" +
+                    "  CNO       INT            NOT NULL AUTO_INCREMENT ," +
+                    "  CEMAIL    VARCHAR(25)    NOT NULL                ," +
+                    "  CPWD      VARCHAR(15)    NOT NULL                ," +
+                    "  CNAME     VARCHAR(15)    NULL                    ," +
+                    "  CSTCD     VARCHAR(10)    NULL                    ," +
+                    "  SDATE     VARCHAR(11)    NULL                    ," +
+                    "  WDATE     VARCHAR(11)    NULL                    ," +
+                    "  CMEM      VARCHAR(15)    NULL                    ," +
+                    "  CDATE     VARCHAR(11)    NULL                    ," +
+                    "  UMEM      VARCHAR(15)    NULL                    ," +
+                    "  UDATE     VARCHAR(11)    NULL                    ," +
+                    "  PRIMARY KEY (CNO))";
 			break;
 		case CREATE_DB:
 			result = "CREATE DATABASE EUNJIDB";
@@ -38,9 +50,7 @@ public enum SQL {
 					"CNTCD VARCHAR(20)," + 
 					"EXCRATE VARCHAR(20))";
 			break;
-		case CREATE_USER:
-			result = "CREATE DATABASE MONEYHUBDB";
-			break;
+
 		}
 		return result;
 	}

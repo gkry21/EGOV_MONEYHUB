@@ -139,12 +139,12 @@ brd =(()=>{
 			.click(e=>{
 				e.preventDefault()
 					let json ={
-						aid : $('#write_form input[name="writer"]').val(),  
+						cemail : $('#write_form input[name="writer"]').val(),  
 						title : $('#write_form input[name="title"]').val(),
 						content : $('#write_form textarea[name="content"]').val()
 						}
 					$.ajax({
-							url : _+'/articles/write',
+							url : sessionStorage.getItem('ctx')+'/articles/write',
 							type :'POST',
 							data :JSON.stringify(json),
 							dataType : 'json',

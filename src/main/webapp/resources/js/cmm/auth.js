@@ -28,10 +28,10 @@ auth =(()=>{
          	$('head').html(auth_vue.join_head())
             $('body').addClass('text-center')
             .html(auth_vue.join_body())
-            $('#aid').keyup(()=>{
-             if($('#aid').val().length > 2){
+            $('#cemail').keyup(()=>{
+             if($('#cemail').val().length > 2){
             	 $.ajax({
-            		url : _+'/user/'+$('#aid').val()+'/exist',
+            		url : _+'/user/'+$('#cemail').val()+'/exist',
             		contentType : 'application/json',
             		success : d => {
             			alert('AJAX 성공 아이디'+d.msg);
@@ -76,8 +76,9 @@ auth =(()=>{
        
        let join =()=>{
 	//    	   init()
-    	   let data = {aid : $('#aid').val(), pwd : $('#pwd').val(), cname : $('#cname').val()}
-           $.ajax({
+    	   let data = {cemail : $('#cemail').val(), cpwd : $('#cpwd').val(), cname : $('#cname').val()}
+           alert('cemailjoin'+data.cemail)
+    	   $.ajax({
                url : _+'/user/',
                type : 'POST', //REST(상태)에 대한 타입,CRUD
                dataType : 'json', //언어타입
@@ -118,26 +119,26 @@ auth =(()=>{
 //    	   })
 //       }
       let login =()=>{
-//          let x =  {css: $.css(), img: $.img(), js :$.js()}
-//          $('head').html(auth_vue.login_head(x))
-//          $('body').addClass('text-center')
-//          .html(auth_vue.login_body(x))
+          let x =  {css: $.css(), img: $.img(), js :$.js()}
+          $('head').html(auth_vue.login_head(x))
+          $('body').addClass('text-center')
+          .html(auth_vue.login_body(x))
           $('<button>',{
    			text:"Sign in",
    			type:"submit",
    			click: e =>{
    				e.preventDefault();
-               let data = {aid : $('#aid').val(), pwd : $('#pwd').val()}
-               alert(data.aid)
+               let data = {cemail : $('#cemail').val(), cpwd : $('#cpwd').val()}
+               alert(data.cemail)
                 	$.ajax({
-                		url : _+'/user/' + data.aid+'/login',
+                		url : _+'/user/' + data.cemail+'/login',
                 		type : 'POST',
                 		dataType : 'json',
                 		data : JSON.stringify(data),
                 		contentType : 'application/json',
                 		success : d => {
-                			setCookie("AID",d.aid)
-                			alert('저장된 쿠키:'+getCookie("AID"))
+                			setCookie("AID",d.cemail)
+                			alert('저장된 쿠키:'+getCookie("CEMAIL"))
                 				brd.onCreate()
                 			},
                 			 error : e => {

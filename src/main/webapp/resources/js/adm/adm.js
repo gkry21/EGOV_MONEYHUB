@@ -105,7 +105,7 @@ adm = (()=>{
     }
 	let cust_mgmt=()=>{
 	     $('#right').empty()		
-		$('<a>고객 테이블 생성</a>')
+		$('<a>고객 테이블 생성</a></br>')
 		.appendTo('#right')
 		.click(e=>{
 			e.preventDefault()
@@ -113,7 +113,7 @@ adm = (()=>{
 				alert('테이블 생성 성공여부 :'+d.msg)
 			})
 		})
-		$('<a>고객테이블 삭제</a>')
+		$('<a>고객테이블 삭제</a></br>')
 		.appendTo('#right')
 		.click(e=>{
 			e.preventDefault()
@@ -121,15 +121,15 @@ adm = (()=>{
 				alert('일괄등록된 유저의 수 :'+d.userCount)
 			})
 		})
-		$('<a>고객명단 대량 생성</a>')
+		$('<a>고객명단 대량 생성</a></br>')
 		.appendTo('#right')
 		.click(e=>{
 			e.preventDefault()
-			$.getJSON(_+'/user/register/users',d=>{
+			$.getJSON(_+'/tx/register/users',d=>{
 				alert('일괄등록된 유저의 수 :'+d.userCount)
 			})
 		})
-		$('<a>데이터베이스 생성</a>')
+		$('<a>데이터베이스 생성</a></br>')
 		.appendTo('#right')
 		.click(e=>{
 			e.preventDefault()
@@ -137,7 +137,7 @@ adm = (()=>{
 				alert('일괄등록된 유저의 수 :'+d.userCount)
 			})
 		})
-		$('<a>거래 생성</a>')
+		$('<a>거래 생성</a></br>')
 		.appendTo('#right')
 		.click(e=>{
 			e.preventDefault()
@@ -145,7 +145,7 @@ adm = (()=>{
 				alert('거래 생성 :'+d.userCount)
 			})
 		})
-		$('<a>거래내역 생성</a>')
+		$('<a>거래내역 생성</a></br>')
 		.appendTo('#right')
 		.click(e=>{
 			e.preventDefault()

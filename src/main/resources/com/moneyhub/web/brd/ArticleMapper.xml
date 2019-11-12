@@ -5,8 +5,8 @@
 <mapper namespace="com.moneyhub.web.brd.ArticleMapper">
 
 	<insert id="insertArticle" parameterType="Article">
-	INSERT INTO ARTICLE(AID, BOARD_TYPE, TITLE, CONTENT) VALUES (
-            #{aid}, #{boardType},#{title}, #{content}
+	INSERT INTO ARTICLE(CEMAIL, BOARD_TYPE, TITLE, CONTENT) VALUES (
+            #{cemail}, #{boardType},#{title}, #{content}
 	)
 	</insert>
 	<select id="countArticle" resultType="String">

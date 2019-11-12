@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.moneyhub.web.pxy.CrawlingProxy;
 import com.moneyhub.web.pxy.PageProxy;
+import com.moneyhub.web.pxy.UserProxy;
 import com.moneyhub.web.usr.User;
 import com.moneyhub.web.usr.UserMapper;
 
@@ -19,6 +20,7 @@ public class TXService { // 서비스라고 이름붙어있지만 포조이다.
 	@Autowired TXMapper txmapper;
 	@Autowired UserMapper userMapper;
 	@Autowired CrawlingProxy cralwer;
+	@Autowired UserProxy manager;
 //	@Autowired List<String> list;
 	
 	@SuppressWarnings("unchecked")
@@ -30,10 +32,7 @@ public class TXService { // 서비스라고 이름붙어있지만 포조이다.
 	}
 
 	public int registerUsers() {
-		List<User> list = new ArrayList<>();
-		for(User u : list) {
-			txmapper.insertUser(u);
-		}
+		manager.insertCustomers();
 	return userMapper.countUsers();
 	}
 }

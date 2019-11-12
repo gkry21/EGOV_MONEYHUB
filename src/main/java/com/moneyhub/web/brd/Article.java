@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Article {
-	private String artseq, image, aid, comments, msg, reting, boardType,title,content;
+	private String artseq, image,comments, msg, reting, boardType,title,content,cemail;
 
 	public String getArtseq() {
 		return artseq; //test
@@ -29,14 +29,6 @@ public class Article {
 
 	public void setImage(String image) {
 		this.image = image;
-	}
-
-	public String getAid() {
-		return aid;
-	}
-
-	public void setAid(String aid) {
-		this.aid = aid;
 	}
 
 	public String getComments() {

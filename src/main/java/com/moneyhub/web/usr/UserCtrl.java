@@ -30,12 +30,12 @@ public class UserCtrl {
 	@Autowired Printer printer;
 	@Autowired UserMapper userMapper;
 	
-	@GetMapping("/{aid}/exist")
-	public Map<?,?> exist(@PathVariable String aid){
-		System.out.println(aid);
-		IFunction<String, Integer> p = o -> userMapper.existId(aid);
+	@GetMapping("/{cemail}/exist")
+	public Map<?,?> exist(@PathVariable String cemail){
+		System.out.println(cemail);
+		IFunction<String, Integer> p = o -> userMapper.existEmail(cemail);
 		map.clear();
-		map.put("msg", (p.apply(aid)==0) ? "SUCCESS" : "FAIL");
+		map.put("msg", (p.apply(cemail)==0) ? "SUCCESS" : "FAIL");
 		System.out.println(map.get("msg"));
 		return map;
 	}
@@ -49,26 +49,26 @@ public class UserCtrl {
 		return map;	
 	}
 	
-	@PostMapping("/{aid}/login")
-	public User login(@PathVariable String aid, @RequestBody User param) {
+	@PostMapping("/{cemail}/login")
+	public User login(@PathVariable String cemail, @RequestBody User param) {
 		System.out.println(param.toString());
 		IFunction<User,User> f = t-> userMapper.selectUserById(param);
 		System.out.println(f.apply(param).toString());
 		return f.apply(param);
 	}
-	@GetMapping("/{aid}")
-	public User serachUserById(@PathVariable String aid, @RequestBody User param) {
+	@GetMapping("/{cemail}")
+	public User serachUserById(@PathVariable String cemail, @RequestBody User param) {
 		IFunction<User,User> f = t-> userMapper.selectUserById(param);
 		return f.apply(param);
 	}
-	@PutMapping("/{aid}")
-	public String updateUser(@PathVariable String aid, @RequestBody User param) {
+	@PutMapping("/{cemail}")
+	public String updateUser(@PathVariable String cemail, @RequestBody User param) {
 		IConsumer<User> c = o -> userMapper.insertUser(param);
 		c.accept(param);
-		return "SUCCESS";	
+		return "SUCCESS";
 	}
-	@DeleteMapping("/{aid}")
-	public String deleteUser(@PathVariable String aid, @RequestBody User param) {
+	@DeleteMapping("/{cemail}")
+	public String deleteUser(@PathVariable String cemail, @RequestBody User param) {
 		IConsumer<User> c = o -> userMapper.insertUser(param);
 		c.accept(param);
 		return "SUCCESS";	

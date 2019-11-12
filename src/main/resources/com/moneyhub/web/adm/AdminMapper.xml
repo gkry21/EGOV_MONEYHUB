@@ -10,9 +10,9 @@
 	SELECT EMPNO FROM ADMIN WHERE EMPNO LIKE #{empno}
 	</select>
 	<select id="selectAdmin2" resultType="Admin" parameterType ="hashmap">
-       SELECT AID,CNAME,PWD
+       SELECT CEMAIL,CNAME,CPWD
 		FROM CLIENT
-		WHERE AID LIKE #{AID} 
+		WHERE CEMAIL LIKE #{CEMAIL} 
 		<trim prefix="WHERE" prefixOverrides="=AND |OR">
 		AND ${} LIKE #{}
 		</trim>

@@ -14,21 +14,21 @@
 	${DROP_USER}
     </delete>
     <select id="selectUserById" resultType="User">
-       SELECT AID,CNAME,PWD
+       SELECT CEMAIL,CNAME,CPWD
 		FROM USER
-		WHERE AID LIKE #{aid} AND PWD LIKE #{pwd}
+		WHERE CEMAIL LIKE #{cemail} AND CPWD LIKE #{cpwd}
     </select>
     <select id="existId" resultType="int">
        SELECT COUNT(*)
 		FROM USER
-		WHERE AID LIKE #{aid}
+		WHERE CEMAIL LIKE #{cemail}
     </select>
     <select id="countUsers" resultType="int">
        SELECT COUNT(*)
 		FROM USER
     </select>
-    <insert id="insertClient" parameterType="User">
-        INSERT INTO USER (AID,CNAME,PWD) VALUES (
-            #{aid}, #{cname}, #{pwd})
+    <insert id="insertUser" parameterType="User">
+        INSERT INTO USER (CEMAIL,CNAME,CPWD) VALUES (
+            #{cemail}, #{cname}, #{cpwd})
     </insert>
 </mapper>

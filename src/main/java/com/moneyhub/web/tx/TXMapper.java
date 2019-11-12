@@ -8,8 +8,13 @@ import com.moneyhub.web.usr.User;
 
 @Repository
 public interface TXMapper {
-	@Insert(" INSERT INTO CLIENT (AID,CNAME,PWD) VALUES (\n" + 
-			"            #{aid}, #{cname}, #{pwd})")
-	public int insertUser(User u);
+	@Insert("INSERT INTO USER (CEMAIL, CPWD, CNAME, CDATE) \n" + 
+			"VALUES (\n" +  
+			"  #{cemail}, #{cpwd}, #{cname}, #{cdate})")
+	public int insertUser(User u); 
+	
+	@Insert(" SELECT COUNT(*) FROM USER\n" + 
+			"		WHERE CEMAIL LIKE #{cemail}")
+	public int existEmail(String cemail);
 
 }
