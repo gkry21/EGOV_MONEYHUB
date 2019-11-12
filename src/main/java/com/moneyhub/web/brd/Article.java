@@ -16,7 +16,7 @@ public class Article {
 	private String artseq, image, aid, comments, msg, reting, boardType,title,content;
 
 	public String getArtseq() {
-		return artseq;
+		return artseq; //test
 	}
 
 	public void setArtseq(String artseq) {
