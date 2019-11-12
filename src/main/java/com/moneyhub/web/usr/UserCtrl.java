@@ -42,12 +42,13 @@ public class UserCtrl {
 	@PostMapping("/")
 	public Map<?,?> join(@RequestBody User param) {
 		printer.accept("join 들어옴 : "+param.toString());
-		IConsumer<User> c = o -> userMapper.insertClient(param);
+		IConsumer<User> c = o -> userMapper.insertUser(param);
 		c.accept(param);
 		map.clear();
 		map.put("msg", "SUCCESS");
 		return map;	
 	}
+	
 	@PostMapping("/{aid}/login")
 	public User login(@PathVariable String aid, @RequestBody User param) {
 		System.out.println(param.toString());
@@ -62,13 +63,13 @@ public class UserCtrl {
 	}
 	@PutMapping("/{aid}")
 	public String updateUser(@PathVariable String aid, @RequestBody User param) {
-		IConsumer<User> c = o -> userMapper.insertClient(param);
+		IConsumer<User> c = o -> userMapper.insertUser(param);
 		c.accept(param);
 		return "SUCCESS";	
 	}
 	@DeleteMapping("/{aid}")
 	public String deleteUser(@PathVariable String aid, @RequestBody User param) {
-		IConsumer<User> c = o -> userMapper.insertClient(param);
+		IConsumer<User> c = o -> userMapper.insertUser(param);
 		c.accept(param);
 		return "SUCCESS";	
 	}
@@ -94,5 +95,4 @@ public class UserCtrl {
 		paramMap.put("map", "SUCCESS");
 		return paramMap;
 	}
-	
 }

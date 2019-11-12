@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-	private String aid,pwd,cname;
+	private String aid,pwd,cname,cemail,cpwd,cdate,customer;
 
 }

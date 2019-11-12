@@ -10,7 +10,7 @@ public enum SQL {
 			result = "DROP TABLE USER";
 			break;
 		case CREATE_DB:
-			result = "CREATE DATABASE MONEYHUBDB";
+			result = "CREATE DATABASE EUNJIDB";
 			break;
 		case CREATE_TRADE:
 			result = "CREATE TABLE TRADE(" + 
@@ -38,8 +38,10 @@ public enum SQL {
 					"CNTCD VARCHAR(20)," + 
 					"EXCRATE VARCHAR(20))";
 			break;
+		case CREATE_USER:
+			result = "CREATE DATABASE MONEYHUBDB";
+			break;
 		}
-
 		return result;
 	}
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.moneyhub.web.pxy.Proxy;
+import com.moneyhub.web.pxy.PageProxy;
 
 @Repository
 public interface ArticleMapper {
@@ -12,5 +12,5 @@ public interface ArticleMapper {
 	public String countArticle();
 	public List<Article> selectAll();
 	public void updateArticle(Article param);
-	public List<Article> selectAll(Proxy pxy);
+	public List<Article> selectAll(PageProxy pxy);
 }

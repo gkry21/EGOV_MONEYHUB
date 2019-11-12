@@ -1,4 +1,4 @@
-package com.moneyhub.web.aop;
+package com.moneyhub.web.tx;
 
 import org.apache.ibatis.annotations.Insert;
 import org.springframework.stereotype.Repository;

@@ -1,4 +1,4 @@
-package com.moneyhub.web.aop;
+package com.moneyhub.web.tx;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.moneyhub.web.pxy.Proxy;
+import com.moneyhub.web.pxy.CrawlingProxy;
+import com.moneyhub.web.pxy.PageProxy;
 import com.moneyhub.web.usr.User;
 import com.moneyhub.web.usr.UserMapper;
 
@@ -17,14 +18,14 @@ import com.moneyhub.web.usr.UserMapper;
 public class TXService { // 서비스라고 이름붙어있지만 포조이다.
 	@Autowired TXMapper txmapper;
 	@Autowired UserMapper userMapper;
-	@Autowired Proxy pxy;
+	@Autowired CrawlingProxy cralwer;
 //	@Autowired List<String> list;
 	
 	@SuppressWarnings("unchecked")
 	public List<?> crawling(Map<?,?> paramMap){
 		List<String> txServicelist = new ArrayList<>();
 		txServicelist.clear();
-		txServicelist = (List<String>) pxy.crawl(paramMap);
+//		txServicelist = (List<String>) cralwer.crawl(paramMap);
 		return txServicelist;  
 	}
 
