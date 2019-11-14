@@ -6,4 +6,7 @@
     <select id="createTrade" parameterType="map">
 	${CREATE_TRADE}
     </select>
+     <delete id="dropTrade" parameterType="map">
+	${DROP_TRADE}
+    </delete>
     </mapper>

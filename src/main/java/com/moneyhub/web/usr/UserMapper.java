@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface UserMapper {
 	public void insertUser(User user);
 	public User selectUserById(User user);
-	public int existId(String aid);
 	public int existEmail(String cemail);
 	public int countUsers();
 	public void createUser(HashMap<String, String> paramMap);

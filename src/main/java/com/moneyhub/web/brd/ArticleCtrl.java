@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.moneyhub.web.cmm.IConsumer;
 import com.moneyhub.web.cmm.ISupplier;
@@ -62,7 +63,6 @@ public class ArticleCtrl {
         		Arrays.asList(s.get(), pager));
         return trunk.get();
     }
-	
 	@PutMapping("/update")
 	public void update(@RequestBody Article param) {
 		IConsumer<Article> c = t-> articleMapper.updateArticle(param);
@@ -87,7 +87,6 @@ public class ArticleCtrl {
 		return s.get();
 	}
 	@GetMapping("/fileupload")
-	public void fileUpload() {
-		
+	public void fileUpload(MultipartFile[] uploadFile) {
 	}
 }

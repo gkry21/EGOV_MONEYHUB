@@ -5,15 +5,15 @@
 <mapper namespace="com.moneyhub.web.brd.ArticleMapper">
 
 	<insert id="insertArticle" parameterType="Article">
-	INSERT INTO ARTICLE(AID, BOARD_TYPE, TITLE, CONTENT) VALUES (
-            #{aid}, #{boardType},#{title}, #{content}
+	INSERT INTO ARTICLE(CEMAIL, BOARDTYPE, TITLE, CONTENT) VALUES (
+            #{cemail}, #{boardType},#{title}, #{content}
 	)
 	</insert>
 	<select id="countArticle" resultType="String">
 	SELECT COUNT(*) FROM ARTICLE
 	</select>
 	<select id="selectAll" resultType="Article">
-	SELECT A.BOARD_TYPE AS boardType, A.* FROM (
+	SELECT A.BOARDTYPE AS boardType, A.* FROM (
 			SELECT * 
 			FROM ARTICLE
 			ORDER BY ARTSEQ DESC) A

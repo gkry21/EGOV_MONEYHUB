@@ -31,12 +31,18 @@ public class TxController {
                 Arrays.asList(site, srch));
         txService.crawling(trunk.get());
     }
-	
 	@GetMapping("/register/users")
 	public Map<?,?> registerUsers() {
 		int userCount = txService.registerUsers();
 		p.accept("서비스 카운팅 :"+ userCount);
 		trunk.put(Arrays.asList("userCount"), Arrays.asList(userCount));
+		return trunk.get();
+	}
+	@GetMapping("/register/trades")
+	public Map<?,?> registerTrades() {
+		int tradeCount = txService.registerTrades();
+		p.accept("서비스 카운팅 :"+ tradeCount);
+		trunk.put(Arrays.asList("tradeCount"), Arrays.asList(tradeCount));
 		return trunk.get();
 	}
 }

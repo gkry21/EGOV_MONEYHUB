@@ -25,5 +25,4 @@ public class Trade {
 	cDate,
 	uMem,
 	uDate;
-
 }

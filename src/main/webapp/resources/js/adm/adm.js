@@ -42,8 +42,8 @@ adm = (()=>{
 		$.each([
 			 {txt:'웹크롤링',name: 'web_crawl'},
 			 {txt:'고객관리',name: 'cust_mgmt'},
-			 {txt:'상품등록',name: 'item_reg'},
-			 {txt:'상품조회',name: 'item_srch'},
+			 {txt:'커뮤니티관리',name: 'comm_mgmt'},
+			 {txt:'아티클관리',name: 'article_mgmt'},
 			 {txt:'상품관리',name: 'item_mod'},
 			 {txt:'상품삭제',name: 'item_del'}],
 			(i,j)=>{
@@ -58,9 +58,9 @@ adm = (()=>{
 				break;
 				case 'cust_mgmt': cust_mgmt()
 					break;
-				case 'item_reg': itemReg()
+				case 'comm_mgmt': comm_mgmt()
 					break;
-				case 'item_srch': itemSrch()
+				case 'article_mgmt': article_mgmt()
 					break;
 				case 'item_mod': itemMod()
 					break;
@@ -77,12 +77,12 @@ adm = (()=>{
                 '<form id="crawl_form" class="form-inline my-2 my-lg-0">'+
                 '  <select name="site" size="2" multiple>'+
                 '  </select>'+
-                '<input class="form-control mr-sm-2" type="text" placeholder="insert URL for crawling" aria-label="Search">'+
+                '<input class="form-control mr-sm-2" value="exratecheck" type="text" placeholder="insert URL for crawling" aria-label="Search">'+
                 '</form>')
         .appendTo('#right')
         $('#crawl_form input[class="form-control mr-sm-2"]')
         .css({width:'80%'})
-        $.each([{sub:'naver.com'},{sub:'daum.net'},{sub:'google.co.kr'},{sub:'youtube.com'}],(i,j)=>{
+        $.each([{sub:'직접 입력'},{sub:'naver.com'},{sub:'daum.net'},{sub:'google.co.kr'},{sub:'youtube.com'}],(i,j)=>{
             $('<option value='+j.sub+'>'+j.sub+'</option>').appendTo('#crawl_form select')
         })
         $('<button class="btn btn-secondary my-2 my-sm-0" type="submit">go crawl</button>')
@@ -105,7 +105,7 @@ adm = (()=>{
     }
 	let cust_mgmt=()=>{
 	     $('#right').empty()		
-		$('<a>고객 테이블 생성</a>')
+		$('<a>고객 테이블 생성</a></br>')
 		.appendTo('#right')
 		.click(e=>{
 			e.preventDefault()
@@ -113,7 +113,7 @@ adm = (()=>{
 				alert('테이블 생성 성공여부 :'+d.msg)
 			})
 		})
-		$('<a>고객테이블 삭제</a>')
+		$('<a>고객테이블 삭제</a></br>')
 		.appendTo('#right')
 		.click(e=>{
 			e.preventDefault()
@@ -121,15 +121,15 @@ adm = (()=>{
 				alert('일괄등록된 유저의 수 :'+d.userCount)
 			})
 		})
-		$('<a>고객명단 대량 생성</a>')
+		$('<a>고객명단 대량 생성</a></br>')
 		.appendTo('#right')
 		.click(e=>{
 			e.preventDefault()
-			$.getJSON(_+'/user/register/users',d=>{
+			$.getJSON(_+'/tx/register/users',d=>{
 				alert('일괄등록된 유저의 수 :'+d.userCount)
 			})
 		})
-		$('<a>데이터베이스 생성</a>')
+		$('<a>데이터베이스 생성</a></br>')
 		.appendTo('#right')
 		.click(e=>{
 			e.preventDefault()
@@ -137,7 +137,7 @@ adm = (()=>{
 				alert('일괄등록된 유저의 수 :'+d.userCount)
 			})
 		})
-		$('<a>거래 생성</a>')
+		$('<a>거래 생성</a></br>')
 		.appendTo('#right')
 		.click(e=>{
 			e.preventDefault()
@@ -145,7 +145,7 @@ adm = (()=>{
 				alert('거래 생성 :'+d.userCount)
 			})
 		})
-		$('<a>거래내역 생성</a>')
+		$('<a>거래내역 생성</a></br>')
 		.appendTo('#right')
 		.click(e=>{
 			e.preventDefault()
@@ -153,74 +153,70 @@ adm = (()=>{
 				alert('거래내역테이블 생성 :'+d.userCount)
 			})
 		})
+		$('<a>거래 삭제</a></br>')
+		.appendTo('#right')
+		.click(e=>{
+			e.preventDefault()
+			alert('adm_' +_)
+			$.getJSON(_+'/trade/drop/trade',d=>{
+				alert('거래내역테이블 삭제 :'+d.map)
+			})
+		})
 	}
-	
-//	let webCrawl=()=>{
-//		$('#right').empty()
-//		$('</br></br></br></br></br><h2>Web Crawling</h2></br></br></br></br></br></br></br>'+
-//		'<form id="formlist"><select name="site" size="1" multiple><input type="text" placeholder="insert URL for crawling" style = "width:70%"/></select></form>')
-//		.appendTo('#right')
-//		$.each([
-//			{txt:'네이버',name:'naver'},{txt:'다음',name:'daum'},{txt:'구글',name:'google'},{txt:'머니허브',name:'moneyhub'}],
-//			(i,j)=>{
-//				$('<option value="'+j.name+'">'+j.txt+'</option>')
-//				.css({border: '1px solid #ddd', margin: '0 auto ', 'line-height': '50px'})
-//				.appendTo('#formlist select')
-//				.submit(function(){
-//					$(this).addClass('active1')
-//					$(this).siblings().removeClass('active1')
-//					switch($(this).attr('name')){
-//					case 'naver': 
-//						alert('naver 들어옴')
-//						$('#go_submit').prop(action,"https://www.naver.com/")
-//						break;
-//					case 'daum': 
-//						$('#go_submit').prop(action,'https://www.daum.net/')
-//						break;
-//					case 'google': googleClick()
-//						break;
-//					case 'moneyhub': moneyHubClick()
-//						break;
-//					}
-//				})
-//			})
-//			$('<form id="go_submit"><input type="submit" value="클릭"/></form>')
-//			.appendTo('#formlist')
-//			.click(e=>{
-//				e.preventDefault()
-//				 $.getJSON(_
-//						 +'/tx/'+$('form#formlist select[name="site"]').val()
-//						 +'/'+$('form#formlist inpit[type="text"]').val(),
-//						 d=>{
-//					 alert(d)
-//				 }) //data와 dataType 리퀘스트바디와 일치해야한다.
-//			
-//			})
-//	}
+	let comm_mgmt=()=>{
+		$('#right').empty()
+		$('<a>커뮤니티 테이블 생성</a><br/>')
+		.appendTo('#right')
+		.click(e=>{
+			e.preventDefault()
+			$.getJSON(_+'/community/create/table',d=>{
+				alert('테이블 생성 성공여부 :'+d.msg)
+			})
+		})
+		$('<a>커뮤니티 테이블 삭제</a><br/>')
+		.appendTo('#right')
+		.click(e=>{
+			e.preventDefault()
+			$.getJSON(_+'/community/drop/table',d=>{
+				alert('테이블 삭제 성공여부 :'+d.msg)
+			})
+		})
+		$('<a>커뮤니티 대량정보 입력</a><br/>')
+		.appendTo('#right')
+		.click(e=>{
+			e.preventDefault()
+			$.getJSON(_+'/tx/write/communities',d=>{
+				alert('커뮤니티 글 수 :'+d.userCount)
+			})
+		})
+	}
+	let article_mgmt=()=>{
+		$('#right').empty()
+		$('<a>아티클 테이블 생성</a><br/>')
+		.appendTo('#right')
+		.click(e=>{
+			e.preventDefault()
+			$.getJSON(_+'/article/create/table',d=>{
+				alert('아티클 테이블 생성 성공여부 :'+d.msg)
+			})
+		})
+		$('<a>아티클 테이블 삭제</a><br/>')
+		.appendTo('#right')
+		.click(e=>{
+			e.preventDefault()
+			$.getJSON(_+'/article/drop/table',d=>{
+				alert('아티클 테이블 삭제 성공여부 :'+d.msg)
+			})
+		})
+		$('<a>아티클 대량정보 입력</a><br/>')
+		.appendTo('#right')
+		.click(e=>{
+			e.preventDefault()
+			$.getJSON(_+'/tx/write/articles',d=>{
+				alert('아티클 글 수 :'+d.userCount)
+			})
+		})
+	}
 
-	let itemReg=()=>{
-		alert('상품등록 페이지로 이동합니다.')
-	}
-	let itemSrch=()=>{
-		alert('상품조회 페이지로 이동합니다.')
-	}
-	let itemMod=()=>{
-		alert('상품관리 페이지로 이동합니다.')
-	}
-	let itemDel=()=>{
-		alert('상품 삭체 페이지로 이동합니다.')
-	}
-//	let naverClick=()=>{
-//		alert('고객관리 페이지로 이동합니다.')
-//	}
-//	let daumClick=()=>{
-//		alert('상품등록 페이지로 이동합니다.')
-//	}
-//	let googleClick=()=>{
-//		alert('상품조회 페이지로 이동합니다.')
-//	}
-//	let moneyHubClick=()=>{
-//		alert('상품관리 페이지로 이동합니다.')
-//	}
 	return {onCreate}
 })();

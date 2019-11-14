@@ -107,8 +107,8 @@ auth_vue = {
         '      <form class="needs-validation" novalidate="">'+
         '        <div class="row">'+
         '          <div class="col-md-6 mb-3">'+
-        '            <label for="userid">USERID</label>'+
-        '            <input type="text" class="form-control" id="aid"  placeholder="" value="" required="">'+
+        '            <label for="userid">CEMAIL</label>'+
+        '            <input type="text" class="form-control" id="cemail"  placeholder="" value="" required="">'+
         '            <div class="invalid-feedback">'+
         '              Valid first name is required.'+
         '            </div>'+
@@ -121,7 +121,7 @@ auth_vue = {
         '            </div>'+
         '          </div>'+
         '          <label for="password">Password</label>'+
-        '          <input type="text" class="form-control" id="pwd"  placeholder="password" required="">'+
+        '          <input type="text" class="form-control" id="cpwd"  placeholder="password" required="">'+
         '          <div class="invalid-feedback">'+
         '            Please enter your shipping address.'+
         '          </div>'+
@@ -292,10 +292,10 @@ auth_vue = {
             '  <form id="form_join" class="form-signin">'+
             '    <img class="mb-4" src="'+x.img+'/bootstrap-solid.svg" alt="" width="72" height="72">'+
             '    <h1 class="h3 mb-3 font-weight-normal">로그인한방성공기원</h1>'+
-            '    <label for="aid" class="sr-only">Email address</label>'+
-            '    <input type="text" id="aid" class="form-control" placeholder="@이메일인척하는 아이디 입력" required="" autofocus="">'+
+            '    <label for="cemail" class="sr-only">Email address</label>'+
+            '    <input type="text" id="cemail" class="form-control" placeholder="@이메일인척하는 아이디 입력" required="" autofocus="">'+
             '    <label for="inputPassword" class="sr-only">Password</label>'+
-            '    <input type="password" id="pwd" class="form-control" placeholder="패스워드알아맞춰보시지" required="">'+
+            '    <input type="password" id="cpwd" class="form-control" placeholder="패스워드알아맞춰보시지" required="">'+
             '    <div class="checkbox mb-3">'+
             '      <label>'+
             '       <a id="a_go_join" href="#">회원가입</a>'+

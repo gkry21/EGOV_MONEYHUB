@@ -37,7 +37,6 @@ public class UserProxy extends Proxy{
 	  	Collections.shuffle(name);	 
 	  	return fname.get(0) + name.get(1) + name.get(2);
     }
-	
 	public String makeEmail() {		//'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
 		List<Character> chars = Arrays.asList('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',											
 											'0','1','2','3','4','5','6','7','8','9');
@@ -85,11 +84,8 @@ public class UserProxy extends Proxy{
 		int dayFirst = 1; 
 		yearLast++;
 		monthLast++;
-		
 		int[] dayLastArray = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-
 		int month = (int)(Math.random()*(monthLast - monthFirst))+monthFirst;
-		
 		int dayLast = 0;
 		for(int i=0; i<dayLastArray.length; i++) {
 			if( month == i+1 ) {
@@ -102,14 +98,13 @@ public class UserProxy extends Proxy{
 													month,
 													(int)(Math.random()*(dayLast - dayFirst))+dayFirst);
 		System.out.println(date);
-		
 		return date;
 	}
 	@Transactional
 	public boolean existEmail(String cemail) {
 		boolean flag = false;
 		
-		if( userMapper.existEmail(cemail) == 1 ) {	// 중복이면 true
+		if( txMapper.existEmail(cemail) == 1 ) {	// 중복이면 true
 			flag = true;
 		}
 		return flag;
@@ -124,7 +119,7 @@ public class UserProxy extends Proxy{
 			user.setCpwd(makePwd());
 			user.setCname(makeName());
 			user.setCdate(makedate());
-			userMapper.insertUser(user);
+			txMapper.insertUser(user);
 			System.out.println("join 성공");
 		}else {
 			System.out.println("이메일 중복 - join 실패");
@@ -134,15 +129,13 @@ public class UserProxy extends Proxy{
 		for(int i = 0; i<num; i++)
 			makeCustomer();
 	}*/
-	
 	@Transactional
 	public void insertCustomers() {
 		for(int i = 0; i<500; i++)
 			makeCustomer();
 	}
-
+	
 	public void truncateCustomers() {
 //		cusMapper.truncateCustomer(paramMap);
-		
 	}
 }
